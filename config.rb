@@ -1,3 +1,7 @@
+require 'active_support/all'
+
+require_relative 'table'
+
 # Markdown
 set :markdown_engine, :redcarpet
 set :markdown,
@@ -18,6 +22,8 @@ set :fonts_dir, 'fonts'
 
 # Activate the syntax highlighter
 activate :syntax
+
+activate :table
 
 activate :autoprefixer do |config|
   config.browsers = ['last 2 version', 'Firefox ESR']

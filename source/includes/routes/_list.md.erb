@@ -50,17 +50,20 @@ This endpoint retrieves all routes.
 `GET /v2/routes`
 
 ### Query Parameters
-<%= my_extension [Param: meow, Default: "meow" , Description:] %>
-<%= [1, 2, 3, 4, 5].map { |i| i * 2 } %>
-  
-Parameter | Default | Description | Example Values
---------- | ------- | ----------- | --------------
-q | | Parameters used to filter the result set.<br />Format queries as \<filter\>\<op\>\<value\><br />Valid ops: : >= <= < > IN<br />Valid filters: host, domain_guid, organization_guid, path | <ul><li>q=filter:value</li><li>q=filter>value</li><li>q=filter IN a,b,c</li></ul>
-page | | Page of results to fetch | |
-results-per-page | | Number of results per page | | 
-order-direction | asc | Order of the results: asc or desc | | 
-order-direction | asc | Order of the results: asc or desc | | 
-<span class='deprecated-labelled'><span class='deprecated'>inline-relations-depth</span></span> | | <span class='deprecated'>0 - don't inline any relations and return URLs. Otherwise, inline to depth N.</span> | |
-<span class='deprecated-labelled'><span class='deprecated'>orphan-relations</span></span> | | <span class='deprecated'>0 - de-duplicate object entries in response</span> | |
-<span class='deprecated-labelled'><span class='deprecated'>exclude-relations</span></span> | | <span class='deprecated'>comma-delimited list of relations to drop from response</span> | |
-<span class='deprecated-labelled'><span class='deprecated'>include-relations</span></span> | | <span class='deprecated'>comma-delimited list of the only relations to include from response</span> | |
+
+<% parameter_table do %>
+    <%= parameter 'q', example_values: ['q=filter:value', 'q=filter>value', 'q=filter IN a,b,c'], description: <<-DESCRIPTION
+          Parameters used to filter the result set.
+          Format queries as <filter><op><value>
+          Valid ops: : >= <= < > IN
+          Valid filters: host, domain_guid, organization_guid, path
+       DESCRIPTION
+    %>
+    <%= parameter 'page', description: 'Page of results to fetch' %>
+    <%= parameter 'results-per-page', description: 'Number of results per page' %>
+    <%= parameter 'order-direction', default: 'asc', description: 'Order of the results', valid_values: ['asc', 'desc'] %>
+    <%= parameter 'inline-relations-depth', deprecated: true, description: '0 - don\'t inline any relations and return URLs. Otherwise, inline to depth N.' %>
+    <%= parameter 'orphan-relations', deprecated: true, description: '0 - de-duplicate object entries in response' %>
+    <%= parameter 'exclude-relations', deprecated: true, description: 'comma-delimited list of relations to drop from response' %>
+    <%= parameter 'include-relations', deprecated: true, description: 'comma-delimited list of the only relations to include from response' %>
+<% end %>

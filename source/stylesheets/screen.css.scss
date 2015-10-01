@@ -622,16 +622,15 @@ html, body {
   }
 }
 
-.deprecated, .deprecated-labelled {
+.deprecated {
   color: grey;
 }
 
-.deprecated {
+.deprecated span {
   text-decoration: line-through;
 }
 
-.deprecated-labelled {
-  &::before {
-    content: 'deprecated: ';
-  }
+.deprecated td:first-child::before {
+  font-weight: bold;
+  content: 'deprecated: ';
 }
